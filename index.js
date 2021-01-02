@@ -21,5 +21,4 @@ process.on('unhandleRejection', (err) => {
     process.exit(1);
 });
 
-
 init();

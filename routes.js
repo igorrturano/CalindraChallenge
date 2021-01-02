@@ -4,6 +4,6 @@ module.exports = [
 {
     method: 'GET',
     path: '/api/v1/calindra',
-    handler: addressess.getAll
+    handler: addressess.getAll,    
 }
 ]
