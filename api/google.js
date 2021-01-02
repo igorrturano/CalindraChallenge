@@ -1,12 +1,13 @@
 const { Client } = require('@googlemaps/google-maps-services-js')
-
+require('dotenv').config()
+const chave = process.env.API_KEY
 const client = new Client({});
 
 async function calculaRota(...enderecos) {
     const enderecosReq = enderecos.map(endereco => client.geocode({
       params: { 
         address: endereco,
-        key: "lol"
+        key: chave
       }
      })
     );
