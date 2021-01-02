@@ -1,4 +1,5 @@
 const { calculaRota, calculaDistancia } = require('../api/google')
+const { values } = require('../routes')
 
 const transformer = address => ({
     type: 'address',
@@ -13,7 +14,11 @@ const transformer = address => ({
 
 
 const getAll = async (request, h) => {
-    const result = await calculaRota(request.query.endereco1, request.query.endereco2);
+   var enderecos = await Promise.all([request.query])
+    .then((endereco) => {
+        console.log(endereco)
+    })
+    const result = await calculaRota(enderecos);
     const distancia = await calculaDistancia(result)
     console.log(distancia)
     return 'Oi temporário'

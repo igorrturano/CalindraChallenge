@@ -6,7 +6,7 @@ async function calculaRota(...enderecos) {
     const enderecosReq = enderecos.map(endereco => client.geocode({
       params: { 
         address: endereco,
-        key: "AIzaSyDH2qt1gM2kd9t81boc9efnVJrQOEqGtB8"
+        key: "lol"
       }
      })
     );
