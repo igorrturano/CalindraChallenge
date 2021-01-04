@@ -4,38 +4,32 @@ const chave = process.env.API_KEY
 const client = new Client({});
 
 
-async function calculaRota(enderecos) {
-  const enderecosReq = enderecos.map(endereco => client.geocode({
+async function getCoordinates(addresses) {
+  const addressesReq = addresses.map(addresses => client.geocode({
     params: { 
-      address: endereco,
+      address: addresses,
       key: chave
     }
    })
   );
-  const result = await Promise.all(enderecosReq)
-  console.log(result[0].data.results);
+  const result = await Promise.all(addressesReq)
+  // console.log(result[0].data.results);
   return result.map(res => ({ address: res.data.results[0].formatted_address, location: res.data.results[0].geometry.location }) )
 };
 
-  function calculaDistancia(enderecos) {
-    const resultado1 = enderecos[0].lat - enderecos[1].lat
-    const resultado2 = enderecos[0].lng - enderecos[1].lng
+function calculateEuclideanDistance(addresses) {
+  const quadradoUm = Math.pow(addresses[0].location.lat - addresses[1].location.lat, 2)
+  const quadradoDois = Math.pow(addresses[0].location.lng - addresses[1].location.lng, 2)
+  const soma = quadradoUm + quadradoDois
 
-    const quadradoUm = Math.pow(resultado1, 2)
-    const quadradoDois = Math.pow(resultado2, 2)
-    const soma = quadradoUm + quadradoDois
-
-    return {
-      distancia: Math.sqrt(soma),
-      enderecos
-    }
+  return {
+    distancia: Math.sqrt(soma),
+    enderecos: [ addresses[0].address, addresses[1].address ]
+  }
 }
-
-
-// console.log(calculaDistancia(calculaRota('rua barao de mesquita 222 tijuca rj', 'rua conde de bonfim 222 tijuca rj')));
 
 module.exports = {
     client,
-    calculaRota,
-    calculaDistancia
+    getCoordinates,
+    calculateEuclideanDistance
 }
