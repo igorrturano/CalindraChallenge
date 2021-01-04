@@ -5,14 +5,9 @@ O desafio consiste em consumir uma api de geocode do google maps e retornar as d
 
 ## Como Rodar
 
-Utilizei o hapi para subir o localhost e o google-maps-service para consumir a api,
-O dotenv para subir a chave secretamente para o GitHub e o config para acessar o arquivo.
-
 ```
-- npm install @hapi/hapi
-- npm install @googlemaps/google-maps-services-js
-- npm install dotenv
-- npm install config
+- npm install
+- npm start
 ```
 
 Para conseguir rodar o código, você precisa ter uma [chave](https://www.google.com) do google.
@@ -38,6 +33,3 @@ Você também poderá adquirir um GET via Curl:
 ## Dependências
 
 - Node: v14.15.1
-- Hapi: v20.0.3
-- dotenv: v8.2.0
-- config: v3.3.3
