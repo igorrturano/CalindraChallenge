@@ -23,17 +23,17 @@ function calculateDistances(addresses) {
 
   const getAll = async (request, h) => {
     const result = await getCoordinates(request.query.endereco)
-    const todasDistancias = await calculateDistances(result)
-    const distanciasOrdenadas = todasDistancias.sort((endA, endB) => {
-      if (endA.distancia > endB.distancia) {
+    const allDistances = await calculateDistances(result)
+    const distanceSortedByProximity = allDistances.sort((firstAddress, secondAddress) => {
+      if (firstAddress.distance > secondAddress.distance) {
         return 1;
-      } else if (endA.distancia < endB.distancia) {
+      } else if (firstAddress.distance < secondAddress.distance) {
         return -1;
       } else {
         return 0;
       }
     })
-    return distanciasOrdenadas
+    return distanceSortedByProximity
 }
 
 

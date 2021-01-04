@@ -18,13 +18,13 @@ async function getCoordinates(addresses) {
 };
 
 function calculateEuclideanDistance(addresses) {
-  const quadradoUm = Math.pow(addresses[0].location.lat - addresses[1].location.lat, 2)
-  const quadradoDois = Math.pow(addresses[0].location.lng - addresses[1].location.lng, 2)
-  const soma = quadradoUm + quadradoDois
+  const latitudeSquare  = Math.pow(addresses[0].location.lat - addresses[1].location.lat, 2)
+  const longitudeSquare = Math.pow(addresses[0].location.lng - addresses[1].location.lng, 2)
+  const sum = latitudeSquare  + longitudeSquare
 
   return {
-    distancia: Math.sqrt(soma),
-    enderecos: [ addresses[0].address, addresses[1].address ]
+    distance: Math.sqrt(sum),
+    addresses: [ addresses[0].address, addresses[1].address ]
   }
 }
 
