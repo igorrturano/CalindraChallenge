@@ -11,12 +11,22 @@ const transformer = address => ({
     }
 })
 
+function comparaEnderecos (enderecos) {
+    const enderecosAlready = [];
+    for (let i = 0; i < enderecos.length; i++){
+      for (let j = i+1; j < enderecos.length; j++) {
+          enderecosAlready.push(calculaDistancia([enderecos[i], enderecos[j]]))
+      }
+    }
+    return Promise.all(enderecosAlready);
+  }
 
-const getAll = async (request, h) => {
-    const result = await calculaRota(request.query.endereco1, request.query.endereco2);
-    const distancia = await calculaDistancia(result)
-    console.log(distancia)
-    return 'Oi temporário'
+  const getAll = async (request, h) => {
+    console.log(request.query)
+    const result = await calculaRota(request.query.endereco)
+    const todasDistancias = await comparaEnderecos(result)
+    console.log(todasDistancias)
+    return todasDistancias
 }
 
 
