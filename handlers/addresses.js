@@ -1,15 +1,15 @@
-const { getCoordinates, calculateEuclideanDistance } = require('../api/google')
+const { getCoordinates } = require('../api/googleservicemap')
 
-const transformer = address => ({
-    type: 'address',
-    id: address.id,
-    attributes: {
-        name: address.name,
-    },
-    links: {
-        self: `/api/v1/address/${address.id}`
-    }
-})
+function calculateEuclideanDistance(addresses) {
+  const latitudeSquare  = Math.pow(addresses[0].location.lat - addresses[1].location.lat, 2)
+  const longitudeSquare = Math.pow(addresses[0].location.lng - addresses[1].location.lng, 2)
+  const sum = latitudeSquare  + longitudeSquare
+
+  return {
+    distance: Math.sqrt(sum),
+    addresses: [ addresses[0].address, addresses[1].address ]
+  }
+}
 
 function calculateDistances(addresses) {
     const addressDistance = [];
@@ -36,8 +36,8 @@ function calculateDistances(addresses) {
     return distanceSortedByProximity
 }
 
-
-
 module.exports = {
-    getAll
+    getAll,
+    calculateDistances,
+    calculateEuclideanDistance
 }

@@ -1,6 +1,5 @@
 const Hapi = require('@hapi/hapi');
-const routes = require('./routes')
-const apiGeocode = require('./api/google')
+const address = require('./address')
 
 const init = async () => {
 
@@ -9,7 +8,7 @@ const init = async () => {
         host: 'localhost'
     });
 
-    server.route(routes)
+    server.route(address)
 
     await server.start();
     console.log('Server Running on %s', server.info.uri);
@@ -22,3 +21,4 @@ process.on('unhandleRejection', (err) => {
 });
 
 init();
+
