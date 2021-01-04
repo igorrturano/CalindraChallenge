@@ -1,0 +1,23 @@
+{
+  "name": "calindra",
+  "version": "0.0.1",
+  "description": "Desafio Backend Calindra",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "server": "nodemon src/index.js"
+  },
+  "keywords": [
+    "Calindra",
+    "Backend"
+  ],
+  "author": "Igor Turano",
+  "license": "ISC",
+  "dependencies": {
+    "@googlemaps/google-maps-services-js": "^3.1.13",
+    "@hapi/hapi": "^20.0.3",
+    "config": "^3.3.3",
+    "dotenv": "^8.2.0"
+  }
+}
