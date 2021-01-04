@@ -18,7 +18,7 @@ Substitua o valor do API_KEY, pela sua chave renomeando o arquivo `.sample.env` 
 
 Você também poderá adquirir um GET via Curl:
 ```
-- curl http://localhost:3000/api/v1/address?endereco=Florianopolis Santa Catarina&endereco=Macapá Amapa&endereco=Salvador Bahia&endereco=Rio de Janeiro RJ
+curl --location --request GET 'http://localhost:3000/api/v1/address?endereco=Florianopolis%20Santa%20Catarina&endereco=Macap%C3%A1%20Amapa&endereco=Salvador%20Bahia&endereco=Rio%20de%20Janeiro%20RJ'
 ```
 ### ou
 
