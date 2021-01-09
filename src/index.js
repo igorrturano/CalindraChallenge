@@ -14,11 +14,10 @@ const init = async () => {
     console.log('Server Running on %s', server.info.uri);
 };
 
-process.on('unhandleRejection', (err) => {
+process.on('unhandledRejection', (err) => {
 
     console.log(err);
     process.exit(1);
 });
 
 init();
-

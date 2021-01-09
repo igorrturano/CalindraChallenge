@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config() 
 const { Client } = require('@googlemaps/google-maps-services-js')
 const key = process.env.API_KEY
 const client = new Client({});
